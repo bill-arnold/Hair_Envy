@@ -1,0 +1,56 @@
+/*product page and prosuct detail page css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100px;
+    height: 100px;
+}
+
+.product-card p {
+    margin: 5px 0;
+}
+
+input#myInput {
+    padding: 10px;
+    margin: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/*home page footer css css */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
