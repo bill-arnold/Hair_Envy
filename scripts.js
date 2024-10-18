@@ -1,96 +1,60 @@
-// Function to handle the "Book Now" button click
-document.querySelector('.btn.btn-primary').addEventListener('click', function () {
-    alert('Your appointment has been booked! 🛍️');
-});
+const cart = [];
+let total = 0;
 
-// Function to handle adding items to the cart
-function addToCart(itemName) {
-    alert(`${itemName} has been added to your cart!`);
-}
-
-// Example function calls for adding items to the cart
-// You can call these functions when a product is added to the cart
-// e.g. addToCart("Radiance Hair Oil");
-// e.g. addToCart("Growth Elixir");
-
-// Testimonials section functionality
-const testimonials = [
-    {
-        image: 'path/to/image1.jpg',
-        title: 'Testimonial 1',
-        text: '“I\'ve struggled with dry hair for years. After using Radiance Hair Oil, my hair has never felt softer or looked shinier. Highly recommend!” — Sarah J.'
-    },
-    {
-        image: 'path/to/image2.jpg',
-        title: 'Testimonial 2',
-        text: '“Growth Elixir really works! I\'ve seen new hair growth in just a few weeks. This product is a game-changer.” — Mark R.'
-    },
-    {
-        image: 'path/to/image3.jpg',
-        title: 'Testimonial 3',
-        text: '“I love the fragrance of these oils! My hair feels rejuvenated, and I can see a noticeable difference in its health.” — Lisa W.'
-    },
-    {
-        image: 'path/to/image4.jpg',
-        title: 'Nail Testimonial 1',
-        text: '“The nail strengthening serum has changed my life! My nails are stronger and healthier than ever.” — Emily T.'
-    },
-    {
-        image: 'path/to/image5.jpg',
-        title: 'Nail Testimonial 2',
-        text: '“I love the nail polish! It lasts for weeks without chipping. Totally worth it!” — Rachel K.'
-    },
-    {
-        image: 'path/to/image6.jpg',
-        title: 'Nail Testimonial 8',
-        text: '“The manicure kits are amazing! Everything I need for a perfect at-home manicure.” — Jessica L.'
-    },
-    {
-        image: 'path/to/image6.jpg',
-        title: 'Nail Testimonial 4',
-        text: '“The manicure kits are amazing! Everything I need for a perfect at-home manicure.” — Jessica L.'
+function addToCart(item, price) {
+    if (item.includes("Acrylic") || item.includes("Silk") || item.includes("French") || item.includes("Gel") || item.includes("Nail Art")) {
+        alert('Please proceed to book an appointment.');
+    } else {
+        cart.push({ item, price });
+        total += price;
+        displayCart();
     }
-];
+}
 
-// Function to display testimonials
-function displayTestimonials() {
-    const testimonialsContainer = document.querySelector('.testimonials .row');
-
-    testimonials.forEach((testimonial) => {
-        const testimonialCard = document.createElement('div');
-        testimonialCard.className = 'col-md-4 mb-3';
-        testimonialCard.innerHTML = `
-            <div class="card">
-                <img src="${testimonial.image}" class="card-img-top" alt="${testimonial.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${testimonial.title}</h5>
-                    <p class="card-text">${testimonial.text}</p>
-                </div>
-            </div>
-        `;
-        testimonialsContainer.appendChild(testimonialCard);
+function displayCart() {
+    const cartContainer = document.getElementById('cart-items');
+    cartContainer.innerHTML = '';
+    cart.forEach((cartItem, index) => {
+        cartContainer.innerHTML += `<div class="cart-item">${cartItem.item} - KSh ${cartItem.price} <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remove</button></div>`;
     });
+    document.getElementById('total-price').innerText = `Total: KSh ${total}`;
+    document.getElementById('cart').style.display = 'block'; // Show cart when items are added
 }
 
-// Call the function to display testimonials on page load
-window.onload = displayTestimonials;
-
-// Example of functionality to send email when an order is placed
-function sendOrderEmail(orderDetails) {
-    // Placeholder for email sending logic
-    console.log('Sending email with order details:', orderDetails);
-    alert('Order has been sent! Check your email for confirmation.');
+function removeFromCart(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    displayCart();
 }
 
-// Call this function when an order is sent
-// Example order details
-const orderDetails = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '123-456-7890',
-    totalAmount: 100,
-    itemsOrdered: ['Radiance Hair Oil', 'Growth Elixir']
-};
+function toggleCart() {
+    const cartContainer = document.getElementById('cart');
+    cartContainer.style.display = cartContainer.style.display === 'none' ? 'block' : 'none';
+}
 
-// Simulate sending an order
-sendOrderEmail(orderDetails);
+function sendOrder() {
+    const name = document.getElementById('customerName').value;
+    const email = document.getElementById('customerEmail').value;
+    const phone = document.getElementById('customerPhone').value;
+
+    if (name && email && phone) {
+        alert(`Order sent!\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nTotal: KSh ${total}`);
+        // Here you would typically send the order to your server
+    } else {
+        alert('Please fill in all fields before sending the order.');
+    }
+}
+
+// WhatsApp integration
+function updateWhatsAppLink() {
+    const name = document.getElementById('customerName').value;
+    const email = document.getElementById('customerEmail').value;
+    const phone = document.getElementById('customerPhone').value;
+    const message = `New Order from ${name} (${email}, ${phone}):\n` + cart.map(item => `${item.item} - KSh ${item.price}`).join('\n') + `\nTotal: KSh ${total}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    document.getElementById('whatsappOrder').href = url;
+}
+
+document.getElementById('customerName').addEventListener('input', updateWhatsAppLink);
+document.getElementById('customerEmail').addEventListener('input', updateWhatsAppLink);
+document.getElementById('customerPhone').addEventListener('input', updateWhatsAppLink);

@@ -5,47 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to your CSS file -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Hair Envy - Services</title>
     <style>
-        .header {
-            position: relative;
-            background: url('/images/StockCake-Beauty\ Product\ Display_1728901769.jpg') no-repeat center center/cover;
-            height: 50vh;
-            color: white;
+        body {
+            font-family: Arial, sans-serif;
         }
 
-        .overlay {
+        .header {
+            background: url('/images/header-bg.jpg') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .header .overlay {
+            background: rgba(0, 0, 0, 0.5);
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
         }
 
         .header-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 20px;
         }
 
-        .cart {
+        .whatsapp-icon {
             position: fixed;
-            right: 10px;
-            top: 10px;
-            background: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .cart-item {
-            margin-bottom: 5px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
     </style>
 </head>
@@ -55,116 +58,95 @@
         <div class="overlay"></div>
         <div class="container header-content">
             <a href="HomePage.html" class="btn btn-secondary mb-4">Return to Home</a>
-            <h1 class="display-4 text-light animate__animated animate__fadeInDown">Shop With Us Today!</h1>
-            <p class="lead text-light fst-italic animate__animated animate__fadeInUp">When life gives you money, go
-                shopping.<br>Shop like it’s Black Friday!</p>
+            <h1 class="display-4 text-light">Shop With Us Today!</h1>
+            <p class="lead text-light fst-italic">When life gives you money, go shopping.<br>Shop like it’s Black
+                Friday!</p>
         </div>
     </header>
 
     <div class="container my-5">
-        <h2>Nail Services</h2>
+        <h2 class="text-center mb-4">Nail Services</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="nail-acrylics.jpg" class="card-img-top" alt="Acrylic Nails">
+                <div class="card shadow-sm border-light">
+                    <img src="/images/n1.jpeg" class="card-img-top" alt="Acrylic Nails"
+                        style="max-height: 100px; object-fit: cover;">
                     <div class="card-body">
-                        <h5 class="card-title">Acrylic Nails</h5>
-                        <p class="card-text">$50.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Acrylic Nails', 50)">Book
+                        <h5 class="card-title">Nail Art or Design Add-Ons</h5>
+                        <p class="card-text">Price Range: KSh 20 - KSh 300 per nail (depending on complexity).</p>
+                        <p class="card-text">Charges for custom nail art like rhinestones, patterns, or 3D designs are
+                            typically added to the base manicure price.</p>
+                        <button class="btn btn-primary"
+                            onclick="openBookingModal('Nail Art or Design Add-Ons', 'KSh 20 - KSh 300 per nail', 20, 300)">Book
                             Appointment</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="nail-silk-wraps.jpg" class="card-img-top" alt="Silk Wraps">
+                <div class="card shadow-sm border-light">
+                    <img src="/images/n2.jpeg" class="card-img-top" alt="Luxury or Spa Manicure"
+                        style="max-height: 100px; object-fit: cover;">
                     <div class="card-body">
-                        <h5 class="card-title">Silk or Fiberglass Wraps</h5>
-                        <p class="card-text">$45.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Silk or Fiberglass Wraps', 45)">Book
+                        <h5 class="card-title">Luxury or Spa Manicure</h5>
+                        <p class="card-text">Price Range: KSh 1,500 - KSh 3,000.</p>
+                        <p class="card-text">An upgraded experience with exfoliation, hydrating masks, and extended
+                            massage for relaxation.</p>
+                        <button class="btn btn-primary"
+                            onclick="openBookingModal('Luxury or Spa Manicure', 'KSh 1,500 - KSh 3,000', 1500, 3000)">Book
                             Appointment</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="nail-french-manicure.jpg" class="card-img-top" alt="French Manicure">
-                    <div class="card-body">
-                        <h5 class="card-title">French Manicure</h5>
-                        <p class="card-text">$40.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('French Manicure', 40)">Book
-                            Appointment</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="nail-gel-manicure.jpg" class="card-img-top" alt="Gel Manicure">
-                    <div class="card-body">
-                        <h5 class="card-title">Gel Manicure</h5>
-                        <p class="card-text">$55.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Gel Manicure', 55)">Book
-                            Appointment</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="nail-pedicure.jpg" class="card-img-top" alt="Pedicure">
-                    <div class="card-body">
-                        <h5 class="card-title">Pedicure</h5>
-                        <p class="card-text">$35.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Pedicure', 35)">Book Appointment</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2>Hair Products</h2>
+        <h2 class="text-center mb-4">Hair Products</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="hair-oil.jpg" class="card-img-top" alt="Hair Growth Oil">
+                <div class="card shadow-sm border-light">
+                    <img src="/images/o2.jpg" class="card-img-top" alt="Hair Growth Oil"
+                        style="max-height: 100px; object-fit: cover;">
                     <div class="card-body">
-                        <h5 class="card-title">Hair Growth Oil</h5>
-                        <p class="card-text">$30.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Hair Growth Oil', 30)">Add to Cart</button>
+                        <h5 class="card-title">Hair Growth Oil 120 ml</h5>
+                        <p class="card-text">Price: KSh 560.00</p>
+                        <button class="btn btn-primary" onclick="addToCart('Hair Growth Oil', 560)">Add to Cart</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="hair-conditioner.jpg" class="card-img-top" alt="Hair Conditioner">
+                <div class="card shadow-sm border-light">
+                    <img src="/images/o1.jpg" class="card-img-top" alt="Hair Conditioner"
+                        style="max-height: 100px; object-fit: cover;">
                     <div class="card-body">
-                        <h5 class="card-title">Hair Conditioner</h5>
-                        <p class="card-text">$25.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Hair Conditioner', 25)">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="hair-shampoo.jpg" class="card-img-top" alt="Hair Shampoo">
-                    <div class="card-body">
-                        <h5 class="card-title">Hair Shampoo</h5>
-                        <p class="card-text">$20.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Hair Shampoo', 20)">Add to Cart</button>
+                        <h5 class="card-title">Hair Conditioner 65 ml</h5>
+                        <p class="card-text">Price: KSh 280.00</p>
+                        <button class="btn btn-primary" onclick="addToCart('Hair Conditioner', 280)">Add to
+                            Cart</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="cart" id="cart">
-            <h4>Shopping Cart</h4>
-            <div id="cart-items"></div>
-            <div id="total-price">Total: $0.00</div>
-            <input type="text" id="customerName" placeholder="Your Name" required>
-            <input type="email" id="customerEmail" placeholder="Your Email" required>
-            <input type="text" id="customerPhone" placeholder="Your Phone Number" required>
-            <button class="btn btn-success mt-2" onclick="sendOrder()">Send Order</button>
+        <div class="cart mt-5" id="cart" style="display:none;">
+            <h4 class="text-center">Shopping Cart</h4>
+            <div id="cart-items" class="mb-3"></div>
+            <div id="total-price" class="mb-3">Total: KSh 0.00</div>
+            <input type="text" id="customerName" class="form-control mb-2" placeholder="Your Name" required>
+            <input type="email" id="customerEmail" class="form-control mb-2" placeholder="Your Email" required>
+            <input type="text" id="customerPhone" class="form-control mb-2" placeholder="Your Phone Number" required>
+
+            <div class="mb-3">
+                <button class="btn btn-info dropdown-toggle" type="button" id="contactDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Contact Options
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                    <li><a class="dropdown-item" href="#" onclick="sendViaWhatsApp()">WhatsApp</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="sendViaGmail()">Email</a></li>
+                </ul>
+            </div>
         </div>
 
-        <button class="btn btn-info" onclick="toggleCart()">Toggle Cart</button>
+        <button class="btn btn-info mt-4" onclick="toggleCart()">Toggle Cart</button>
     </div>
 
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
@@ -175,7 +157,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="bookingForm">
+                    <form id="bookingForm" onsubmit="submitAppointment(event)">
                         <div class="mb-3">
                             <label for="customerNameModal" class="form-label">Your Name</label>
                             <input type="text" class="form-control" id="customerNameModal" required>
@@ -196,110 +178,128 @@
                             <label for="serviceType" class="form-label">Service Type</label>
                             <input type="text" class="form-control" id="serviceType" readonly>
                         </div>
-                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                        <div class="mb-3">
+                            <label for="servicePrice" class="form-label">Service Price</label>
+                            <input type="text" class="form-control" id="servicePrice" readonly>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Confirm Appointment</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="text-center py-4 mt-5 bg-dark text-light">
-        <p>&copy; 2024 Hair Envy. All Rights Reserved.</p>
-    </footer>
+
+
+    </div>
 
     <script>
-        const cart = [];
-        let total = 0;
-
-        function addToCart(item, price) {
-            if (item.includes("Acrylic") || item.includes("Silk") || item.includes("French") || item.includes("Gel") || item.includes("Pedicure")) {
-                $('#serviceType').val(item);
-                $('#bookingModal').modal('show');
-                return;
-            }
-
-            cart.push({ item, price });
-            total += price;
-            updateCart();
-            alert(`${item} has been added to the cart!`);
-        }
+        let cartItems = [];
+        let totalAmount = 0;
 
         function toggleCart() {
-            $('#cart').toggle();
+            const cart = document.getElementById('cart');
+            cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
         }
+
+        function addToCart(productName, productPrice) {
+            cartItems.push({ name: productName, price: productPrice });
+            totalAmount += productPrice;
+
+            updateCart();
+
+        }
+
+
+
+
 
         function updateCart() {
-            const cartItemsContainer = $('#cart-items');
-            cartItemsContainer.empty();
-            cart.forEach((cartItem, index) => {
-                cartItemsContainer.append(`
-                                                                        <div class="cart-item">
-                                                                            ${cartItem.item} - $${cartItem.price.toFixed(2)}
-                                                                            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remove</button>
-                                                                        </div>
-                                                                    `);
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = '';
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.textContent = `${item.name} - KSh ${item.price.toFixed(2)}`;
+                cartItemsDiv.appendChild(itemDiv);
             });
-            $('#total-price').text(`Total: $${total.toFixed(2)}`);
+
+            document.getElementById('total-price').textContent = `Total: KSh ${totalAmount.toFixed(2)}`;
+            document.getElementById('cart').style.display = cartItems.length > 0 ? 'block' : 'none';
+        }
+        function clearCart() {
+            cartItems = []; // Clear the cart items
+            totalAmount = 0; // Reset total amount
+            updateCart(); // Update the cart display
+
+            // Clear input fields for customer details
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerPhone').value = '';
+
+            // Clear any selected product dropdowns or checkboxes (if applicable)
+            const productSelect = document.getElementById('productSelect'); // Replace with your actual select element ID
+            if (productSelect) productSelect.selectedIndex = 0; // Reset to the default option
         }
 
-        function removeFromCart(index) {
-            const removedItem = cart[index];
-            cart.splice(index, 1);
-            total -= removedItem.price;
-            updateCart();
-            alert(`${removedItem.item} has been removed from the cart!`);
+
+        function sendViaWhatsApp() {
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const message = `Order Details:\n\nName: ${customerName}\nEmail: ${customerEmail}\nPhone: ${customerPhone}\nItems:\n${cartItems.map(item => item.name).join('\n')}\nTotal: KSh ${totalAmount.toFixed(2)}`;
+            const phoneNumber = "+254747373327";
+            const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`;
+
+            window.open(url, '_blank');
+            clearCart();
         }
 
-        function sendOrder() {
-            const name = $('#customerName').val();
-            const email = $('#customerEmail').val();
-            const phone = $('#customerPhone').val();
-            const orderItems = cart.map(item => `${item.item} - $${item.price.toFixed(2)}`).join(', ');
-            const orderTotal = total;
+        function sendViaGmail() {
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const message = `Order Details:\n\nName: ${customerName}\nEmail: ${customerEmail}\nPhone: ${customerPhone}\nItems:\n${cartItems.map(item => item.name).join('\n')}\nTotal: KSh ${totalAmount.toFixed(2)}`;
 
-            if (!name || !email || !phone) {
-                alert("Please fill in all fields!");
-                return;
-            }
-
-            // Simulate sending the order (replace with actual email logic)
-            const orderDetails = `Order Details:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nTotal: $${orderTotal}\nItems: ${orderItems}`;
-            alert("Order sent! " + orderDetails);
-            // Send to owner email
-            sendEmail('jennythuiya@gmail.com', orderDetails);
-            // Clear the cart
-            cart.length = 0;
-            total = 0;
-            updateCart();
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=jennythuiya@gmail.com&su=Order%20Details&body=${encodeURIComponent(message)}`);
+            clearCart();
         }
 
-        function sendEmail(email, content) {
-            // Placeholder for sending email logic
-            console.log(`Email sent to ${email} with content:\n${content}`);
-            alert("An email has been sent to the owner and a confirmation to the client!");
+
+        function openBookingModal(serviceName, servicePrice, minPrice, maxPrice) {
+            document.getElementById('serviceType').value = serviceName;
+            document.getElementById('servicePrice').value = `KSh ${minPrice} - KSh ${maxPrice}`;
+            const bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            bookingModal.show();
         }
 
-        // Booking form submission
-        $('#bookingForm').on('submit', function (event) {
+        function submitAppointment(event) {
             event.preventDefault();
-            const name = $('#customerNameModal').val();
-            const email = $('#customerEmailModal').val();
-            const date = $('#appointmentDate').val();
-            const time = $('#appointmentTime').val();
-            const service = $('#serviceType').val();
+            const name = document.getElementById('customerNameModal').value;
+            const email = document.getElementById('customerEmailModal').value;
+            const date = document.getElementById('appointmentDate').value;
+            const time = document.getElementById('appointmentTime').value;
+            const service = document.getElementById('serviceType').value;
 
-            if (!name || !email || !date || !time) {
-                alert("Please fill in all fields!");
-                return;
-            }
+            // Create a message to send via WhatsApp
+            const message = `Appointment Details:\n\nName: ${name}\nEmail: ${email}\nDate: ${date}\nTime: ${time}\nService: ${service}`;
+            const phoneNumber = "+254747373327";
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`;
 
-            const appointmentDetails = `Appointment Details:\nName: ${name}\nEmail: ${email}\nDate: ${date}\nTime: ${time}\nService: ${service}`;
-            alert("Appointment booked! " + appointmentDetails);
-            // Send appointment to owner email
-            sendEmail('jennythuiya@gmail.com', appointmentDetails);
-            $('#bookingModal').modal('hide');
-        });
+            // Open WhatsApp message in a new tab
+            window.open(whatsappUrl, '_blank');
+
+            // (Optional) Send appointment details via email logic here
+            const emailMessage = `Appointment Details:\n\nName: ${name}\nEmail: ${email}\nDate: ${date}\nTime: ${time}\nService: ${service}`;
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=jennythuiya@gmail.com&su=Appointment%20Details&body=${encodeURIComponent(emailMessage)}`);
+
+            // Close the booking modal after submission
+            const bookingModal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+            bookingModal.hide();
+
+            // Reset the form
+            document.getElementById('bookingForm').reset();
+        }
     </script>
+
 </body>
 
 </html>
