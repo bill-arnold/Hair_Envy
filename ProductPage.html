@@ -1,3 +1,4 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Hair Envy - Services</title>
+    <title>Viridian Crown Naturals - Services</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,6 +51,17 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             cursor: pointer;
         }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        footer {
+            background-color: #4c2603;
+            color: white;
+        }
     </style>
 </head>
 
@@ -64,69 +76,36 @@
         </div>
     </header>
 
-    <div class="container my-5">
-        <h2 class="text-center mb-4">Nail Services</h2>
+    <h2 class="text-center my-5">Hair Products</h2>
+    <div class="container">
         <div class="row">
+            <!-- Product 1 -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-light">
-                    <img src="/images/n1.jpeg" class="card-img-top" alt="Acrylic Nails"
-                        style="max-height: 100px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">Nail Art or Design Add-Ons</h5>
-                        <p class="card-text">Price Range: KSh 20 - KSh 300 per nail (depending on complexity).</p>
-                        <p class="card-text">Charges for custom nail art like rhinestones, patterns, or 3D designs are
-                            typically added to the base manicure price.</p>
-                        <button class="btn btn-primary"
-                            onclick="openBookingModal('Nail Art or Design Add-Ons', 'KSh 20 - KSh 300 per nail', 20, 300)">Book
-                            Appointment</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <img src="/images/n2.jpeg" class="card-img-top" alt="Luxury or Spa Manicure"
-                        style="max-height: 100px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">Luxury or Spa Manicure</h5>
-                        <p class="card-text">Price Range: KSh 1,500 - KSh 3,000.</p>
-                        <p class="card-text">An upgraded experience with exfoliation, hydrating masks, and extended
-                            massage for relaxation.</p>
-                        <button class="btn btn-primary"
-                            onclick="openBookingModal('Luxury or Spa Manicure', 'KSh 1,500 - KSh 3,000', 1500, 3000)">Book
-                            Appointment</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="text-center mb-4">Hair Products</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <img src="/images/o2.jpg" class="card-img-top" alt="Hair Growth Oil"
-                        style="max-height: 100px; object-fit: cover;">
+                    <img src="/images/pic 65.png" class="card-img-top" alt="Hair Growth Oil">
                     <div class="card-body">
                         <h5 class="card-title">Hair Growth Oil 120 ml</h5>
-                        <p class="card-text">Price: KSh 560.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Hair Growth Oil', 560)">Add to Cart</button>
+                        <p class="card-text">Price: KSh 600.00</p>
+                        <button class="btn btn-primary" onclick="addToCart('Hair Growth Oil', 600)">Add to Cart</button>
                     </div>
                 </div>
             </div>
+            <!-- Product 2 -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-light">
-                    <img src="/images/o1.jpg" class="card-img-top" alt="Hair Conditioner"
-                        style="max-height: 100px; object-fit: cover;">
+                    <img src="/images/pic120.png" class="card-img-top" alt="Hair Conditioner">
                     <div class="card-body">
-                        <h5 class="card-title">Hair Conditioner 65 ml</h5>
-                        <p class="card-text">Price: KSh 280.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Hair Conditioner', 280)">Add to
+                        <h5 class="card-title">Hair Growth Oil 65 ml</h5>
+                        <p class="card-text">Price: KSh 300.00</p>
+                        <button class="btn btn-primary" onclick="addToCart('Hair Conditioner', 300)">Add to
                             Cart</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="cart mt-5" id="cart" style="display:none;">
+        <!-- Cart Section -->
+        <div class="cart mt-5" id="cart" style="display: none;">
             <h4 class="text-center">Shopping Cart</h4>
             <div id="cart-items" class="mb-3"></div>
             <div id="total-price" class="mb-3">Total: KSh 0.00</div>
@@ -141,7 +120,6 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="contactDropdown">
                     <li><a class="dropdown-item" href="#" onclick="sendViaWhatsApp()">WhatsApp</a></li>
-                    <!--<li><a class="dropdown-item" href="#" onclick="sendViaGmail()">Email</a></li>-->
                 </ul>
             </div>
         </div>
@@ -149,161 +127,58 @@
         <button class="btn btn-info mt-4" onclick="toggleCart()">Toggle Cart</button>
     </div>
 
-    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="bookingModalLabel">Book Appointment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="bookingForm" onsubmit="submitAppointment(event)">
-                        <div class="mb-3">
-                            <label for="customerNameModal" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="customerNameModal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="customerEmailModal" class="form-label">Your Email</label>
-                            <input type="email" class="form-control" id="customerEmailModal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="appointmentDate" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="appointmentDate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="appointmentTime" class="form-label">Time</label>
-                            <input type="time" class="form-control" id="appointmentTime" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="serviceType" class="form-label">Service Type</label>
-                            <input type="text" class="form-control" id="serviceType" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="servicePrice" class="form-label">Service Price</label>
-                            <input type="text" class="form-control" id="servicePrice" readonly>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Confirm Appointment</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    </div>
-    <footer class="text-center py-4 mt-5 bg-dark text-light">
-        <p>&copy; 2024 Hair Envy. All Rights Reserved.</p>
+    <footer class="text-center py-4 mt-5  text-light">
+        <p>&copy; 2024 Viridian Crown Naturals. All Rights Reserved.</p>
     </footer>
 
-
     <script>
+        // Cart functionality
         let cartItems = [];
-        let totalAmount = 0;
+
+        function addToCart(name, price) {
+            cartItems.push({ name, price });
+            updateCart();
+            alert(`${name} added to cart!`);
+        }
+
+        function updateCart() {
+            const cartDiv = document.getElementById('cart');
+            const cartItemsDiv = document.getElementById('cart-items');
+            const totalPriceDiv = document.getElementById('total-price');
+
+            if (cartItems.length === 0) {
+                cartDiv.style.display = 'none';
+                return;
+            }
+
+            cartDiv.style.display = 'block';
+            cartItemsDiv.innerHTML = cartItems.map((item, index) => `
+                <div>
+                    ${item.name} - KSh ${item.price.toFixed(2)}
+                    <button class="btn btn-danger btn-sm ms-2" onclick="removeFromCart(${index})">Remove</button>
+                </div>
+            `).join('');
+            const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+            totalPriceDiv.textContent = `Total: KSh ${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCart();
+        }
 
         function toggleCart() {
             const cart = document.getElementById('cart');
             cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
         }
 
-        function addToCart(productName, productPrice) {
-            cartItems.push({ name: productName, price: productPrice });
-            totalAmount += productPrice;
-
-            updateCart();
-
-        }
-
-
-
-
-
-        function updateCart() {
-            const cartItemsDiv = document.getElementById('cart-items');
-            cartItemsDiv.innerHTML = '';
-            cartItems.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.textContent = `${item.name} - KSh ${item.price.toFixed(2)}`;
-                cartItemsDiv.appendChild(itemDiv);
-            });
-
-            document.getElementById('total-price').textContent = `Total: KSh ${totalAmount.toFixed(2)}`;
-            document.getElementById('cart').style.display = cartItems.length > 0 ? 'block' : 'none';
-        }
-        function clearCart() {
-            cartItems = []; // Clear the cart items
-            totalAmount = 0; // Reset total amount
-            updateCart(); // Update the cart display
-
-            // Clear input fields for customer details
-            document.getElementById('customerName').value = '';
-            document.getElementById('customerEmail').value = '';
-            document.getElementById('customerPhone').value = '';
-
-            // Clear any selected product dropdowns or checkboxes (if applicable)
-            const productSelect = document.getElementById('productSelect'); // Replace with your actual select element ID
-            if (productSelect) productSelect.selectedIndex = 0; // Reset to the default option
-        }
-
-
         function sendViaWhatsApp() {
-            const customerName = document.getElementById('customerName').value;
-            const customerEmail = document.getElementById('customerEmail').value;
-            const customerPhone = document.getElementById('customerPhone').value;
-            const message = `Order Details:\n\nName: ${customerName}\nEmail: ${customerEmail}\nPhone: ${customerPhone}\nItems:\n${cartItems.map(item => item.name).join('\n')}\nTotal: KSh ${totalAmount.toFixed(2)}`;
-            const phoneNumber = "+254747373327";
-            const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`;
-
-            window.open(url, '_blank');
-            clearCart();
-        }
-
-        function sendViaGmail() {
-            const customerName = document.getElementById('customerName').value;
-            const customerEmail = document.getElementById('customerEmail').value;
-            const customerPhone = document.getElementById('customerPhone').value;
-            const message = `Order Details:\n\nName: ${customerName}\nEmail: ${customerEmail}\nPhone: ${customerPhone}\nItems:\n${cartItems.map(item => item.name).join('\n')}\nTotal: KSh ${totalAmount.toFixed(2)}`;
-
-            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=hairenvycreations@gmail.com&su=Order%20Details&body=${encodeURIComponent(message)}`);
-            clearCart();
-        }
-
-
-        function openBookingModal(serviceName, servicePrice, minPrice, maxPrice) {
-            document.getElementById('serviceType').value = serviceName;
-            document.getElementById('servicePrice').value = `KSh ${minPrice} - KSh ${maxPrice}`;
-            const bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-            bookingModal.show();
-        }
-
-        function submitAppointment(event) {
-            event.preventDefault();
-            const name = document.getElementById('customerNameModal').value;
-            const email = document.getElementById('customerEmailModal').value;
-            const date = document.getElementById('appointmentDate').value;
-            const time = document.getElementById('appointmentTime').value;
-            const service = document.getElementById('serviceType').value;
-
-            // Create a message to send via WhatsApp
-            const message = `Appointment Details:\n\nName: ${name}\nEmail: ${email}\nDate: ${date}\nTime: ${time}\nService: ${service}`;
-            const phoneNumber = "+254747373327";
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`;
-
-            // Open WhatsApp message in a new tab
-            window.open(whatsappUrl, '_blank');
-
-            // (Optional) Send appointment details via email logic here
-            const emailMessage = `Appointment Details:\n\nName: ${name}\nEmail: ${email}\nDate: ${date}\nTime: ${time}\nService: ${service}`;
-            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=jennythuiya@gmail.com&su=Appointment%20Details&body=${encodeURIComponent(emailMessage)}`);
-
-            // Close the booking modal after submission
-            const bookingModal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
-            bookingModal.hide();
-
-            // Reset the form
-            document.getElementById('bookingForm').reset();
+            const message = cartItems.map(item => `${item.name}: KSh ${item.price.toFixed(2)}`).join('\n');
+            const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+            const link = `https://wa.me/254729439733?text=${encodeURIComponent(`Order:\n${message}\nTotal: KSh ${total.toFixed(2)}`)}`;
+            window.open(link, '_blank');
         }
     </script>
-
 </body>
 
 </html>
